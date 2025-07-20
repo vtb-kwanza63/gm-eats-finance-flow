@@ -4,6 +4,7 @@ import { Navigation } from '@/components/layout/Navigation';
 import { Dashboard } from '@/pages/Dashboard';
 import { Transactions } from '@/pages/Transactions';
 import { Analytics } from '@/pages/Analytics';
+import FinancialStatements from '@/pages/FinancialStatements';
 import { TransactionForm } from '@/components/forms/TransactionForm';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useTransactions } from '@/hooks/useTransactions';
@@ -58,6 +59,8 @@ const Index = () => {
             isLoading={isLoading}
           />
         );
+      case 'financial-statements':
+        return <FinancialStatements />;
       default:
         return null;
     }

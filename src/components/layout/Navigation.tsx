@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { BarChart3, CreditCard, PieChart, Menu, X } from 'lucide-react';
+import { BarChart3, CreditCard, PieChart, FileText, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -13,6 +13,7 @@ const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
   { id: 'transactions', label: 'Transactions', icon: CreditCard },
   { id: 'analytics', label: 'Analytics', icon: PieChart },
+  { id: 'financial-statements', label: 'Financial Statements', icon: FileText },
 ];
 
 export function Navigation({ activeTab, onTabChange }: NavigationProps) {
