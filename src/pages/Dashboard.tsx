@@ -55,7 +55,7 @@ export function Dashboard({ transactions, isLoading, onAddTransaction }: Dashboa
         >
           <Button
             onClick={() => onAddTransaction()}
-            className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+            className="bg-gradient-primary hover-scale"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Transaction

@@ -242,11 +242,20 @@ Professional blue/green gradient theme with smooth animations.
 
   /* Hover effects */
   .hover-scale {
-    transition: var(--transition-smooth);
+    @apply transition-transform duration-200;
   }
 
   .hover-scale:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
+  }
+
+  /* Story link animation */
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300;
+  }
+  
+  .story-link:hover::after {
+    @apply scale-x-100 origin-bottom-left;
   }
 
   .hover-lift {

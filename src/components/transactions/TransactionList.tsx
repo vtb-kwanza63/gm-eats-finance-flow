@@ -188,7 +188,7 @@ function TransactionCard({ transaction, index }: TransactionCardProps) {
       transition={{ delay: index * 0.05 }}
       layout
     >
-      <Card className="hover-lift transition-all duration-200 hover:shadow-md">
+      <Card className="hover-scale">
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">

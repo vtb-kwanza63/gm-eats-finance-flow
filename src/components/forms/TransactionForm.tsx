@@ -143,7 +143,7 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false, defaultT
           placeholder="Enter transaction description..."
           value={formData.transaction}
           onChange={(e) => setFormData(prev => ({ ...prev, transaction: e.target.value }))}
-          className="transition-all duration-200 focus:scale-[1.02]"
+          className="hover-scale"
         />
       </div>
 
@@ -158,7 +158,7 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false, defaultT
           placeholder="Enter amount"
           value={formData.value || ''}
           onChange={(e) => setFormData(prev => ({ ...prev, value: parseFloat(e.target.value) || 0 }))}
-          className="transition-all duration-200 focus:scale-[1.02]"
+          className="hover-scale"
         />
       </div>
 
@@ -170,7 +170,7 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false, defaultT
             <Button
               variant="outline"
               className={cn(
-                "w-full justify-start text-left font-normal transition-all duration-200 hover:scale-[1.02]",
+                "w-full justify-start text-left font-normal hover-scale",
                 !formData.date && "text-muted-foreground"
               )}
             >
@@ -206,7 +206,7 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false, defaultT
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1 bg-gradient-primary hover:shadow-glow transition-all duration-300"
+          className="flex-1 bg-gradient-primary hover-scale"
         >
           {isSubmitting ? (
             <>
