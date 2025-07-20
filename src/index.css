@@ -14,27 +14,27 @@ Professional blue/green gradient theme with smooth animations.
     --foreground: 203 39% 15%;
 
     /* Card and surface colors */
-    --card: 255 255 255;
+    --card: 0 0% 100%;
     --card-foreground: 203 39% 15%;
 
     /* Popover colors */
-    --popover: 255 255 255;
+    --popover: 0 0% 100%;
     --popover-foreground: 203 39% 15%;
 
     /* Professional blue/green primary theme */
     --primary: 195 85% 41%;
     --primary-variant: 173 100% 30%;
-    --primary-foreground: 255 255 255;
+    --primary-foreground: 0 0% 100%;
     --primary-light: 195 85% 92%;
 
     /* Success green for income */
     --success: 142 76% 36%;
-    --success-foreground: 255 255 255;
+    --success-foreground: 0 0% 100%;
     --success-light: 142 76% 95%;
 
     /* Warning red for expenses */
     --warning: 0 84% 60%;
-    --warning-foreground: 255 255 255;
+    --warning-foreground: 0 0% 100%;
     --warning-light: 0 84% 97%;
 
     /* Secondary neutral tones */
@@ -51,7 +51,7 @@ Professional blue/green gradient theme with smooth animations.
 
     /* Destructive colors */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 255 255 255;
+    --destructive-foreground: 0 0% 100%;
 
     /* Border and input colors */
     --border: 214 32% 91%;
@@ -62,7 +62,7 @@ Professional blue/green gradient theme with smooth animations.
     --gradient-primary: linear-gradient(135deg, hsl(195 85% 41%), hsl(173 100% 30%));
     --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(120 100% 25%));
     --gradient-warning: linear-gradient(135deg, hsl(0 84% 60%), hsl(15 100% 55%));
-    --gradient-card: linear-gradient(135deg, hsl(255 255 255), hsl(248 250 252));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(248 250 252));
     --gradient-hero: linear-gradient(135deg, hsl(195 85% 41% / 0.1), hsl(173 100% 30% / 0.1));
 
     /* Shadows and elevations */
