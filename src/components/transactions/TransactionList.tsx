@@ -34,7 +34,9 @@ export function TransactionList({
   }, [transactions, searchTerm]);
 
   const handleFilterChange = (key: keyof FilterParams, value: string | undefined) => {
-    const newFilters = { ...filters, [key]: value };
+    // Convert "all" back to undefined for API calls
+    const apiValue = value === "all" ? undefined : value;
+    const newFilters = { ...filters, [key]: apiValue };
     setFilters(newFilters);
     onFilterChange?.(newFilters);
   };
@@ -72,28 +74,28 @@ export function TransactionList({
           {/* Filter Controls */}
           <div className="flex flex-wrap gap-3">
             <Select
-              value={filters.type || ""}
-              onValueChange={(value) => handleFilterChange('type', value || undefined)}
+              value={filters.type || "all"}
+              onValueChange={(value) => handleFilterChange('type', value === "all" ? undefined : value)}
             >
               <SelectTrigger className="w-auto min-w-[120px]">
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Types</SelectItem>
+                <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="income">Income</SelectItem>
                 <SelectItem value="expense">Expense</SelectItem>
               </SelectContent>
             </Select>
 
             <Select
-              value={filters.month || ""}
-              onValueChange={(value) => handleFilterChange('month', value || undefined)}
+              value={filters.month || "all"}
+              onValueChange={(value) => handleFilterChange('month', value === "all" ? undefined : value)}
             >
               <SelectTrigger className="w-auto min-w-[120px]">
                 <SelectValue placeholder="Month" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Months</SelectItem>
+                <SelectItem value="all">All Months</SelectItem>
                 {Array.from({ length: 12 }, (_, i) => {
                   const month = String(i + 1).padStart(2, '0');
                   const monthName = format(new Date(2024, i, 1), 'MMMM');
@@ -107,14 +109,14 @@ export function TransactionList({
             </Select>
 
             <Select
-              value={filters.year || ""}
-              onValueChange={(value) => handleFilterChange('year', value || undefined)}
+              value={filters.year || "all"}
+              onValueChange={(value) => handleFilterChange('year', value === "all" ? undefined : value)}
             >
               <SelectTrigger className="w-auto min-w-[120px]">
                 <SelectValue placeholder="Year" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Years</SelectItem>
+                <SelectItem value="all">All Years</SelectItem>
                 {[2024, 2025].map(year => (
                   <SelectItem key={year} value={String(year)}>
                     {year}
