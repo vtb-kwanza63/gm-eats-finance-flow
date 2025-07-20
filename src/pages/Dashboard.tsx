@@ -9,7 +9,7 @@ import type { Transaction } from '@/types/transaction';
 interface DashboardProps {
   transactions: Transaction[];
   isLoading: boolean;
-  onAddTransaction: () => void;
+  onAddTransaction: (type?: 'income' | 'expense') => void;
 }
 
 export function Dashboard({ transactions, isLoading, onAddTransaction }: DashboardProps) {
@@ -54,7 +54,7 @@ export function Dashboard({ transactions, isLoading, onAddTransaction }: Dashboa
           transition={{ delay: 0.2 }}
         >
           <Button
-            onClick={onAddTransaction}
+            onClick={() => onAddTransaction()}
             className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
           >
             <Plus className="w-4 h-4 mr-2" />
@@ -107,7 +107,7 @@ export function Dashboard({ transactions, isLoading, onAddTransaction }: Dashboa
               <Button
                 variant="outline"
                 className="w-full justify-start"
-                onClick={onAddTransaction}
+                onClick={() => onAddTransaction('income')}
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Income
@@ -115,7 +115,7 @@ export function Dashboard({ transactions, isLoading, onAddTransaction }: Dashboa
               <Button
                 variant="outline"
                 className="w-full justify-start"
-                onClick={onAddTransaction}
+                onClick={() => onAddTransaction('expense')}
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Expense

@@ -11,6 +11,7 @@ import { useTransactions } from '@/hooks/useTransactions';
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [selectedTransactionType, setSelectedTransactionType] = useState<'income' | 'expense'>('income');
   
   const {
     transactions,
@@ -19,7 +20,10 @@ const Index = () => {
     refreshTransactions,
   } = useTransactions();
 
-  const handleAddTransaction = () => {
+  const handleAddTransaction = (type?: 'income' | 'expense') => {
+    if (type) {
+      setSelectedTransactionType(type);
+    }
     setIsAddDialogOpen(true);
   };
 
@@ -87,6 +91,7 @@ const Index = () => {
           </DialogHeader>
           <TransactionForm
             isModal={true}
+            defaultType={selectedTransactionType}
             onSuccess={handleFormSuccess}
             onCancel={() => setIsAddDialogOpen(false)}
           />

@@ -19,13 +19,14 @@ interface TransactionFormProps {
   onSuccess?: () => void;
   onCancel?: () => void;
   isModal?: boolean;
+  defaultType?: 'income' | 'expense';
 }
 
-export function TransactionForm({ onSuccess, onCancel, isModal = false }: TransactionFormProps) {
+export function TransactionForm({ onSuccess, onCancel, isModal = false, defaultType = 'income' }: TransactionFormProps) {
   const [formData, setFormData] = useState<TransactionFormData>({
     transaction: '',
     value: 0,
-    transactionType: 'income',
+    transactionType: defaultType,
     date: new Date(),
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
