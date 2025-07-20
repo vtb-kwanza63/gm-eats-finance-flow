@@ -8,12 +8,14 @@ export interface Transaction {
   _id?: string;
   Date: TransactionDate;
   Transaction: string;
+  value: number;
   Transaction_type: 'income' | 'expense';
   __v?: number;
 }
 
 export interface TransactionFormData {
   transaction: string;
+  value: number;
   transactionType: 'income' | 'expense';
   date: Date;
 }

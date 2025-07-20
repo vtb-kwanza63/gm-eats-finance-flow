@@ -24,6 +24,7 @@ interface TransactionFormProps {
 export function TransactionForm({ onSuccess, onCancel, isModal = false }: TransactionFormProps) {
   const [formData, setFormData] = useState<TransactionFormData>({
     transaction: '',
+    value: 0,
     transactionType: 'income',
     date: new Date(),
   });
@@ -42,6 +43,15 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false }: Transa
       return;
     }
 
+    if (formData.value <= 0) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid amount greater than 0",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -52,6 +62,7 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false }: Transa
           day: String(formData.date.getDate()).padStart(2, '0'),
         },
         Transaction: formData.transaction,
+        value: formData.value,
         Transaction_type: formData.transactionType,
       });
 
@@ -64,6 +75,7 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false }: Transa
       // Reset form
       setFormData({
         transaction: '',
+        value: 0,
         transactionType: 'income',
         date: new Date(),
       });
@@ -130,6 +142,21 @@ export function TransactionForm({ onSuccess, onCancel, isModal = false }: Transa
           placeholder="Enter transaction description..."
           value={formData.transaction}
           onChange={(e) => setFormData(prev => ({ ...prev, transaction: e.target.value }))}
+          className="transition-all duration-200 focus:scale-[1.02]"
+        />
+      </div>
+
+      {/* Amount */}
+      <div className="space-y-2">
+        <Label htmlFor="value">Amount</Label>
+        <Input
+          id="value"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="Enter amount"
+          value={formData.value || ''}
+          onChange={(e) => setFormData(prev => ({ ...prev, value: parseFloat(e.target.value) || 0 }))}
           className="transition-all duration-200 focus:scale-[1.02]"
         />
       </div>

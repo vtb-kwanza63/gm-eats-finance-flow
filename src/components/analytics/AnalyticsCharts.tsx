@@ -33,9 +33,9 @@ export function AnalyticsCharts({ transactions, isLoading }: AnalyticsChartsProp
       }
 
       if (transaction.Transaction_type === 'income') {
-        monthlyTotals[key].income += 1;
+        monthlyTotals[key].income += transaction.value;
       } else {
-        monthlyTotals[key].expenses += 1;
+        monthlyTotals[key].expenses += transaction.value;
       }
       
       monthlyTotals[key].net = monthlyTotals[key].income - monthlyTotals[key].expenses;
@@ -73,9 +73,9 @@ export function AnalyticsCharts({ transactions, isLoading }: AnalyticsChartsProp
       }
 
       if (transaction.Transaction_type === 'income') {
-        yearlyTotals[year].income += 1;
+        yearlyTotals[year].income += transaction.value;
       } else {
-        yearlyTotals[year].expenses += 1;
+        yearlyTotals[year].expenses += transaction.value;
       }
       
       yearlyTotals[year].net = yearlyTotals[year].income - yearlyTotals[year].expenses;

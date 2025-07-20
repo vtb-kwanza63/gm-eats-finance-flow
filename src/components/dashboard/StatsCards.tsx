@@ -25,14 +25,14 @@ export function StatsCards({ transactions, isLoading }: StatsCardsProps) {
       parseInt(t.Date.year) === currentYear
     );
 
-    const totalIncome = transactions.filter(t => t.Transaction_type === 'income').length;
-    const totalExpenses = transactions.filter(t => t.Transaction_type === 'expense').length;
+    const totalIncome = transactions.filter(t => t.Transaction_type === 'income').reduce((sum, t) => sum + t.value, 0);
+    const totalExpenses = transactions.filter(t => t.Transaction_type === 'expense').reduce((sum, t) => sum + t.value, 0);
     
-    const thisMonthIncome = thisMonthTransactions.filter(t => t.Transaction_type === 'income').length;
-    const thisMonthExpenses = thisMonthTransactions.filter(t => t.Transaction_type === 'expense').length;
+    const thisMonthIncome = thisMonthTransactions.filter(t => t.Transaction_type === 'income').reduce((sum, t) => sum + t.value, 0);
+    const thisMonthExpenses = thisMonthTransactions.filter(t => t.Transaction_type === 'expense').reduce((sum, t) => sum + t.value, 0);
     
-    const thisYearIncome = thisYearTransactions.filter(t => t.Transaction_type === 'income').length;
-    const thisYearExpenses = thisYearTransactions.filter(t => t.Transaction_type === 'expense').length;
+    const thisYearIncome = thisYearTransactions.filter(t => t.Transaction_type === 'income').reduce((sum, t) => sum + t.value, 0);
+    const thisYearExpenses = thisYearTransactions.filter(t => t.Transaction_type === 'expense').reduce((sum, t) => sum + t.value, 0);
 
     return {
       total: {
@@ -127,7 +127,7 @@ export function StatsCards({ transactions, isLoading }: StatsCardsProps) {
                         animate={{ scale: 1, opacity: 1 }}
                         className={cn("text-3xl font-bold", card.textColor)}
                       >
-                        {card.value}
+                        {card.title.includes('Transaction') ? card.value : `$${card.value.toLocaleString()}`}
                       </motion.p>
                     </div>
                     <div className={cn(
@@ -145,18 +145,18 @@ export function StatsCards({ transactions, isLoading }: StatsCardsProps) {
                     <div>
                       <span className="block">This Year</span>
                       <span className="font-medium text-foreground">
-                        {card.title.includes('Income') ? stats.thisYear.income :
-                         card.title.includes('Expenses') ? stats.thisYear.expenses :
-                         card.title.includes('Net') ? stats.thisYear.net :
+                        {card.title.includes('Income') ? `$${stats.thisYear.income.toLocaleString()}` :
+                         card.title.includes('Expenses') ? `$${stats.thisYear.expenses.toLocaleString()}` :
+                         card.title.includes('Net') ? `$${stats.thisYear.net.toLocaleString()}` :
                          stats.thisYear.transactions}
                       </span>
                     </div>
                     <div>
                       <span className="block">All Time</span>
                       <span className="font-medium text-foreground">
-                        {card.title.includes('Income') ? stats.total.income :
-                         card.title.includes('Expenses') ? stats.total.expenses :
-                         card.title.includes('Net') ? stats.total.net :
+                        {card.title.includes('Income') ? `$${stats.total.income.toLocaleString()}` :
+                         card.title.includes('Expenses') ? `$${stats.total.expenses.toLocaleString()}` :
+                         card.title.includes('Net') ? `$${stats.total.net.toLocaleString()}` :
                          stats.total.transactions}
                       </span>
                     </div>

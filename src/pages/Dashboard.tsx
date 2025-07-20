@@ -126,23 +126,23 @@ export function Dashboard({ transactions, isLoading, onAddTransaction }: Dashboa
                   <div className="flex justify-between text-sm">
                     <span>Income</span>
                     <span className="text-success font-medium">
-                      {transactions.filter(t => {
+                      ${transactions.filter(t => {
                         const now = new Date();
                         return t.Transaction_type === 'income' && 
                                parseInt(t.Date.month) === now.getMonth() + 1 &&
                                parseInt(t.Date.year) === now.getFullYear();
-                      }).length}
+                      }).reduce((sum, t) => sum + t.value, 0).toLocaleString()}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Expenses</span>
                     <span className="text-warning font-medium">
-                      {transactions.filter(t => {
+                      ${transactions.filter(t => {
                         const now = new Date();
                         return t.Transaction_type === 'expense' && 
                                parseInt(t.Date.month) === now.getMonth() + 1 &&
                                parseInt(t.Date.year) === now.getFullYear();
-                      }).length}
+                      }).reduce((sum, t) => sum + t.value, 0).toLocaleString()}
                     </span>
                   </div>
                 </div>

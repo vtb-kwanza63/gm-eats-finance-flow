@@ -218,18 +218,26 @@ function TransactionCard({ transaction, index }: TransactionCardProps) {
               </div>
             </div>
 
-            {/* Type Badge */}
-            <Badge
-              variant="secondary"
-              className={cn(
-                "capitalize",
-                isIncome 
-                  ? "bg-success-light text-success border-success/20" 
-                  : "bg-warning-light text-warning border-warning/20"
-              )}
-            >
-              {transaction.Transaction_type}
-            </Badge>
+            {/* Amount and Type */}
+            <div className="text-right">
+              <div className={cn(
+                "text-lg font-semibold mb-1",
+                isIncome ? "text-success" : "text-warning"
+              )}>
+                {isIncome ? '+' : '-'}${transaction.value.toLocaleString()}
+              </div>
+              <Badge
+                variant="secondary"
+                className={cn(
+                  "capitalize",
+                  isIncome 
+                    ? "bg-success-light text-success border-success/20" 
+                    : "bg-warning-light text-warning border-warning/20"
+                )}
+              >
+                {transaction.Transaction_type}
+              </Badge>
+            </div>
           </div>
         </CardContent>
       </Card>
